@@ -31,3 +31,18 @@ Please note that the SQL setup script or local database files are **not included
 1. Clone the repository:
    ```bash
    git clone [https://github.com/Muhammedali709/CSHARP-Users-Customers-CRUD.git](https://github.com/Muhammedali709/CSHARP-Users-Customers-CRUD.git)
+2. Open the `.sln` file in Visual Studio.
+3. Press `F5` or click **Start** to run the application.
+
+## 🚀 Usage
+
+* **Register/Login:** Create a new account or log in with existing credentials.
+* **Add Contact:** Click `Add` in the top menu to save a new person to your database.
+* **Update Contact:** Click the empty header cell on the far left of any row to select the entire contact. Then click `Edit -> Update` to modify their details.
+* **Delete Contact:** Select an entire row and click `Edit -> Delete`. A confirmation dialog will prevent accidental deletions.
+
+## 🧠 How It Works
+
+1. **Authentication State:** Upon successful login, the app queries the database and caches the `CurrentUserId` in memory (`Form1`).
+2. **Data Binding:** When adding, updating, or deleting a contact, the app binds user inputs along with the cached `CurrentUserId` directly to SQL parameters.
+3. **Form Communication:** Sub-forms (like Add or Update) receive a reference to the main table form via constructors (`this`). This allows them to remotely trigger data refreshes (`parentForm.doldur()`) as soon as a database transaction succeeds.
